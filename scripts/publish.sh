@@ -45,5 +45,5 @@ pl-pkg sign packages \
 
 pl-pkg publish packages \
     --package-id="${version}" \
-    --skip-existing-packages \
+    --fail-existing-packages\
     --all-platforms
