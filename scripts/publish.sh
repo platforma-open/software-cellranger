@@ -30,7 +30,7 @@ for f in "${files_to_check[@]}"; do
         echo ""
         echo "No entrypoint descriptor found at '${f}'."
         echo ""
-        echo "Looks like you're going to publish new version of subread distribution."
+        echo "Looks like you're going to publish new version of cellranger distribution."
         echo "See README.md for the instructions on how to do this properly."
         echo ""
 

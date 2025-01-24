@@ -27,11 +27,12 @@
       } 
     },
     "entrypoints": {
-      "cellranger":     { "binary": { "artifact": "9.0.0", "cmd": ["{pkg}/bin/cellranger"] } }
+      "cellranger":     { "binary": { "artifact": "9.0.0", "cmd": ["{pkg}/bin/cellranger"] } },
+      "cellranger-9.0.0":     { "binary": { "artifact": "9.0.0", "cmd": ["{pkg}/bin/cellranger"] } }
     }
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@platforma-sdk/package-builder": "^2.9.2"
+    "@platforma-sdk/package-builder": "^2.15.0"
   }
 }
