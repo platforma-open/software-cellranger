@@ -4,7 +4,6 @@ set -o errexit
 set -o nounset
 
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}/../../"
 
 base_url="https://cdn.platforma.bio/internal/pkgs/cellranger"
 
@@ -20,7 +19,7 @@ version="${1}"
 os="${2}"
 arch="${3}"
 dst_root="dld"
-dst_data_dir="${dst_root}/cellranger-${version}-${os}-${arch}"
+dst_data_dir="${dst_root}/${os}-${arch}"
 
 # Simplified arch and ext determination
 case "${arch}" in
@@ -35,22 +34,10 @@ case "${os}" in
     *) echo "Unknown OS: ${os}"; exit 1 ;;
 esac
 
-dst_archive_path="${dst_root}/cellranger-${version}-${os}-${arch}.${ext}"
+dst_archive_path="${dst_root}/${version}-${os}-${arch}.${ext}"
 
 # Simplify directory creation and exit early for specific unsupported combinations
 mkdir -p "${dst_data_dir}"
-
-# Check and skip specific combinations
-if { [[ "${os}" == "linux" ]] && [[ "${arch}" == "arm64" ]]; } || 
-   { [[ "${os}" == "macosx" ]] && [[ "${arch}" == "arm64" ]]; } || 
-   { [[ "${os}" == "macosx" ]] && [[ "${arch}" == "x64" ]]; } || 
-   { [[ "${os}" == "windows" ]] && [[ "${arch}" == "x64" ]]; }; then
-    echo "Skipping unsupported combination: ${os}, ${arch}"
-    exit 0
-else
-    echo "Proceeding with supported combination: ${os}, ${arch}"
-    # Continue with the rest of the script if not exiting
-fi
 
 log() {
     printf "%s\n" "$@"

@@ -1,0 +1,44 @@
+{
+  "name": "@platforma-open/milaboratories.software-cellranger.9.0.0",
+  "version": "1.0.0",
+  "description": "Cellranger software package for Platforma Backend",
+  "scripts": {
+    "build": "rm -rf dld && ../scripts/build.sh 9.0.0",
+    "prepublishOnly": "pl-pkg prepublish"
+  },
+  "files": [
+    "dist/"
+  ],
+  "block-software": {
+    "entrypoints": {
+      "main": {
+        "docker": {
+          "artifact": {
+            "type": "docker",
+            "dockerfile": "./Dockerfile",
+            "context": "./dld/linux-x64"
+          },
+          "cmd": ["/app/bin/cellranger"]
+        },
+        "binary": {
+          "artifact": {
+            "registry": "platforma-open",
+            "type": "binary",
+            "roots": {
+              "linux-x64": "./dld/linux-x64",
+              "linux-aarch64": "./dld/linux-aarch64",
+              "macosx-x64": "./dld/macosx-x64",
+              "macosx-aarch64": "./dld/macosx-aarch64",
+              "windows-x64": "./dld/windows-x64"
+            }
+          },
+          "cmd": ["{pkg}/bin/cellranger"]
+        }
+      }
+    }
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@platforma-sdk/package-builder": "catalog:"
+  }
+}

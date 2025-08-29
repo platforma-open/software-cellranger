@@ -7,7 +7,6 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}"
 
 if [ "$#" -ne 1 ]; then
     echo ""
@@ -22,16 +21,12 @@ fi
 #
 version="${1}"
 
-# Fast-track: make descriptors at the very beginning as packages download may take a while
-pl-pkg build descriptors \
-    --package-id="${version}"
+${script_dir}/download.sh "${version}" linux x64
 
-./pkgs/pkg-download.sh "${version}" macosx x64
-./pkgs/pkg-download.sh "${version}" macosx aarch64
-./pkgs/pkg-download.sh "${version}" linux x64
-./pkgs/pkg-download.sh "${version}" linux aarch64
-./pkgs/pkg-download.sh "${version}" windows x64
+# Cellranger is available only for lixux x64
+mkdir -p dld/linux-aarch64  # ${script_dir}/download.sh "${version}" linux aarch64
+mkdir -p dld/macosx-x64     # ${script_dir}/download.sh "${version}" macosx x64
+mkdir -p dld/macosx-aarch64 # ${script_dir}/download.sh "${version}" macosx aarch64
+mkdir -p dld/windows-x64    # ${script_dir}/download.sh "${version}" windows x64
 
-pl-pkg build packages \
-    --package-id="${version}" \
-    --all-platforms
+pl-pkg build --all-platforms

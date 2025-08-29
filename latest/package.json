@@ -1,0 +1,25 @@
+{
+  "name": "@platforma-open/milaboratories.software-cellranger",
+  "version": "1.0.2",
+  "description": "Cellranger software package for Platforma Backend",
+  "scripts": {
+    "build": "pl-pkg build",
+    "prepublishOnly": "pl-pkg prepublish"
+  },
+  "files": [
+    "dist/"
+  ],
+  "block-software": {
+    "entrypoints": {
+      "main":             { "reference": "@platforma-open/milaboratories.software-cellranger.9.0.0/dist/tengo/software/main.sw.json" },
+      "cellranger":       { "reference": "@platforma-open/milaboratories.software-cellranger.9.0.0/dist/tengo/software/main.sw.json" },
+      "cellranger-9.0.0": { "reference": "@platforma-open/milaboratories.software-cellranger.9.0.0/dist/tengo/software/main.sw.json" }
+    }
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@platforma-sdk/package-builder": "catalog:",
+    "@platforma-open/milaboratories.software-cellranger.9.0.0": "workspace:*"
+  }
+}
+  

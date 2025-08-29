@@ -1,38 +1,21 @@
 {
-  "name": "@platforma-open/milaboratories.software-cellranger",
-  "version": "1.0.2",
-  "description": "Cellranger software package for Platforma Backend",
+  "name": "software-cellranger",
   "scripts": {
-    "build": "true",
-    "pkg:build": "rm -rf dld && ./scripts/build.sh 9.0.0",
-    "pkg:publish": "./scripts/publish.sh 9.0.0",
-    "prepublishOnly": "npm run pkg:build && npm run pkg:publish"
-  },
-  "files": [
-    "dist/"
-  ],
-  "block-software": {
-    "artifacts": {
-      "9.0.0": {
-        "registry": "platforma-open",
-        "version": "9.0.0",
-        "type": "binary",
-        "roots": {
-          "linux-x64": "./dld/cellranger-9.0.0-linux-x64",
-          "linux-aarch64": "./dld/cellranger-9.0.0-linux-aarch64",
-          "macosx-x64": "./dld/cellranger-9.0.0-macosx-x64",
-          "macosx-aarch64": "./dld/cellranger-9.0.0-macosx-aarch64",
-          "windows-x64": "./dld/cellranger-9.0.0-windows-x64"
-        }
-      } 
-    },
-    "entrypoints": {
-      "cellranger":     { "binary": { "artifact": "9.0.0", "cmd": ["{pkg}/bin/cellranger"] } },
-      "cellranger-9.0.0":     { "binary": { "artifact": "9.0.0", "cmd": ["{pkg}/bin/cellranger"] } }
-    }
+    "cleanup": "pnpm -r cleanup",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "update-sdk": "pl-blocks-deps-updater"
   },
   "license": "UNLICENSED",
+  "packageManager": "pnpm@9.14.4",
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
-    "@platforma-sdk/package-builder": "^2.15.0"
+    "turbo": "catalog:",
+    "@changesets/cli": "catalog:",
+    "@platforma-sdk/blocks-deps-updater": "catalog:"
   }
 }
