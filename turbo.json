@@ -3,8 +3,8 @@
   "globalDependencies": ["tsconfig.json"],
   "tasks": {
     "build": {
-      "inputs": ["$TURBO_DEFAULT$", "!./dld/**", "!./pkg-*.tgz"],
-      "outputs": ["./dist/**"],
+      "inputs": ["$TURBO_DEFAULT$", "!./dld/**"],
+      "outputs": ["./dist/**", "./pkg-*.tgz", "./pkg-*.zip"],
       "dependsOn": ["^build"]
     },
     "test": {
