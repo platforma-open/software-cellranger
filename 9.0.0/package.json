@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.software-cellranger.9.0.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cellranger software package for Platforma Backend",
   "scripts": {
     "build": "rm -rf dld && ../scripts/build.sh 9.0.0",
@@ -18,7 +18,9 @@
             "dockerfile": "./Dockerfile",
             "context": "./dld/linux-x64"
           },
-          "cmd": ["/app/bin/cellranger"]
+          "cmd": [
+            "/app/bin/cellranger"
+          ]
         },
         "binary": {
           "artifact": {
@@ -32,7 +34,9 @@
               "windows-x64": "./dld/windows-x64"
             }
           },
-          "cmd": ["{pkg}/bin/cellranger"]
+          "cmd": [
+            "{pkg}/bin/cellranger"
+          ]
         }
       }
     }
