@@ -5,10 +5,12 @@
     "build": {
       "inputs": ["$TURBO_DEFAULT$", "!./dld/**"],
       "outputs": ["./dist/**", "./pkg-*.tgz", "./pkg-*.zip"],
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["PL_DOCKER_REGISTRY_PUSH_TO"]
     },
     "test": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "passThroughEnv": ["PL_DOCKER_REGISTRY_PUSH_TO"]
     }
   }
 }
