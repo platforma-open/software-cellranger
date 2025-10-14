@@ -1,5 +1,11 @@
 # @platforma-open/milaboratories.software-cellranger
 
+## 1.0.5
+
+### Patch Changes
+
+- a27c381: technical release
+
 ## 1.0.4
 
 ### Patch Changes

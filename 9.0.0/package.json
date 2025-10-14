@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.software-cellranger.9.0.0",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cellranger software package for Platforma Backend",
   "scripts": {
     "build": "rm -rf dld && ../scripts/build.sh 9.0.0",
